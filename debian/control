@@ -31,11 +31,13 @@ Homepage: https://wayfire.org/
 Vcs-Git: https://salsa.debian.org/debian/wayfire.git
 Vcs-Browser: https://salsa.debian.org/debian/wayfire
 
-Package: libwf-touch-dev
+Package: libmeteor-touch-dev
 Architecture: any
 Multi-Arch: same
 Depends:
  ${misc:Depends},
+Replaces: libwf-touch-dev
+Breaks: libwf-touch-dev
 Description: 3D Wayland compositor (wf-touch library dev files)
  Meteor is a 3D Wayland compositor, inspired by Compiz and based on
  wlroots. It aims to create a customizable, extendable and lightweight
@@ -44,12 +46,14 @@ Description: 3D Wayland compositor (wf-touch library dev files)
  This package contains the development files for the embedded
  wf-touch library.
 
-Package: libwf-utils-dev
+Package: libmeteor-utils-dev
 Architecture: any
 Multi-Arch: same
 Depends:
- libwf-utils0t64 (= ${binary:Version}),
+ libmeteor-utils0t64 (= ${binary:Version}),
  ${misc:Depends},
+Replaces: libwf-utils-dev
+Breaks: libwf-utils-dev
 Description: 3D Wayland compositor (wf-utils library dev files)
  Meteor is a 3D Wayland compositor, inspired by Compiz and based on
  wlroots. It aims to create a customizable, extendable and lightweight
@@ -58,10 +62,10 @@ Description: 3D Wayland compositor (wf-utils library dev files)
  This package contains the development files for the embedded
  wf-utils library.
 
-Package: libwf-utils0t64
+Package: libmeteor-utils0t64
 Provides: ${t64:Provides}
-Replaces: libwf-utils0
-Breaks: libwf-utils0 (<< ${source:Version})
+Replaces: libwf-utils0, libwf-utils0t64
+Breaks: libwf-utils0 (<< ${source:Version}), libwf-utils0t64
 Architecture: any
 Multi-Arch: same
 Depends:
@@ -104,7 +108,7 @@ Depends:
  libpango1.0-dev,
  libpixman-1-dev,
  libwayland-dev,
- libwf-utils-dev,
+ libmeteor-utils-dev,
  libwlroots-0.19-dev,
  ${misc:Depends},
 Provides:

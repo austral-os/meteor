@@ -1,0 +1,9 @@
+prefix=/usr
+includedir=${prefix}/include
+libdir=${prefix}/lib/x86_64-linux-gnu
+
+Name: wf-utils
+Description: Utilities library for Wayfire
+Version: 0.4.0
+Libs: -L${libdir} -lwf-utils
+Cflags: -I${includedir}

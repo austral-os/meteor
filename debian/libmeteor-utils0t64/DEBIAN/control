@@ -1,0 +1,21 @@
+Package: libmeteor-utils0t64
+Source: meteor
+Version: 0.1.0-1
+Architecture: amd64
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Installed-Size: 171
+Depends: libc6 (>= 2.38), libgcc-s1 (>= 3.0), libstdc++6 (>= 13.1)
+Breaks: libwf-utils0 (<< 0.1.0-1), libwf-utils0t64
+Replaces: libwf-utils0, libwf-utils0t64
+Provides: libmeteor-utils0 (= 0.1.0-1)
+Section: x11
+Priority: optional
+Multi-Arch: same
+Homepage: https://wayfire.org/
+Description: 3D Wayland compositor (wf-utils library)
+ Meteor is a 3D Wayland compositor, inspired by Compiz and based on
+ wlroots. It aims to create a customizable, extendable and lightweight
+ environment without sacrificing its appearance.
+ .
+ This package contains the shared library files for the embedded
+ wf-utils library.
