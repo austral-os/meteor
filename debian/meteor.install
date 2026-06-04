@@ -1,0 +1,8 @@
+usr/bin/
+usr/lib/*/libwayfire-blur-base.so
+usr/lib/*/meteor/
+usr/share/man/man1/meteor.1
+usr/share/meteor/
+usr/share/wayland-sessions/
+usr/lib/*/libwf-config.so.*
+usr/share/xdg-desktop-portal/meteor-portals.conf

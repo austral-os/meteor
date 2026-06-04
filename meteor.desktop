@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Meteor
+Exec=meteor
+TryExec=meteor
+Icon=
+Type=Application
+DesktopNames=Meteor;wlroots

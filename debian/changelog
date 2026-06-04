@@ -1,0 +1,170 @@
+meteor (0.1.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Drop debian patches
+  * Update wlroots dependency to 0.19
+  * Build wf-config from source subproject
+
+ -- Horacio <horacio@austral.os>  Wed, 03 Jun 2026 20:20:00 -0300
+
+wayfire (0.9.0-5) unstable; urgency=medium
+
+  * QA upload.
+
+  [ Scott Moreau ]
+  * ipc-input-methods: Pass device vendor/product id from libinput if available
+
+  [ Chris Hofstaedtler ]
+  * Break reform-firedecor using old wlroots
+
+ -- Chris Hofstaedtler <zeha@debian.org>  Tue, 24 Dec 2024 13:08:54 +0100
+
+wayfire (0.9.0-4) unstable; urgency=medium
+
+  * debian/patches: expand patches for upstream branch track-wlroots
+  * add debian/salsa-ci.yml
+
+ -- Johannes Schauer Marin Rodrigues <josch@debian.org>  Wed, 04 Dec 2024 13:59:44 +0100
+
+wayfire (0.9.0-3) unstable; urgency=medium
+
+  * QA upload.
+  * debian/rules: clean up subprojects directory (Closes: #1045910)
+  * debian/patches: add patch for compatibility with wlroots 0.18
+
+ -- Johannes Schauer Marin Rodrigues <josch@debian.org>  Sun, 24 Nov 2024 18:19:01 +0100
+
+wayfire (0.9.0-2) unstable; urgency=medium
+
+  * QA upload.
+  * Upload to unstable.
+
+ -- Boyuan Yang <byang@debian.org>  Sun, 13 Oct 2024 18:18:54 -0400
+
+wayfire (0.9.0-1) experimental; urgency=medium
+
+  * QA upload.
+  * New upstream release.
+  * debian/patches/: Dropped, not needed anymore.
+  * debian/control: Update build-dependency versions.
+  * debian/control: Update build-dependencies to use libwlroots-0.18-dev.
+  * debian/patches/80d6bcc6b2de023d99e4c5d8ed4a9cb8313b3196.patch:
+    Add patch to fix compatibility with wf-touch git HEAD.
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 08 Oct 2024 15:00:52 -0400
+
+wayfire (0.8.1-2) unstable; urgency=medium
+
+  * QA upload.
+  * Orphan the packge. (See #1076391)
+
+ -- Boyuan Yang <byang@debian.org>  Mon, 15 Jul 2024 12:31:37 -0400
+
+wayfire (0.8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Boyuan Yang <byang@debian.org>  Thu, 21 Mar 2024 18:57:33 -0400
+
+wayfire (0.8.0+git20240110-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Rename libraries for 64-bit time_t transition.  Closes: #1063065
+
+ -- Steve Langasek <vorlon@debian.org>  Thu, 29 Feb 2024 01:52:00 +0000
+
+wayfire (0.8.0+git20240110-2) unstable; urgency=medium
+
+  * debian/patches/d02f4efbc5aa875f4139b5b63c9a882237e594db.patch:
+    Add patch from upstream trunk to fix 0.8.0 regression where
+    modal windows opened as a tile. (upstream issue 1990)
+  * debian/patches/1ecf72a565e9d8bbda81ea04a7b60471ce81dbce.patch:
+    Ignore SIGPIPE globally. (upstream issue 2096)
+
+ -- Boyuan Yang <byang@debian.org>  Fri, 16 Feb 2024 10:46:33 -0500
+
+wayfire (0.8.0+git20240110-1) unstable; urgency=medium
+
+  * New upstream trunk snapshot.
+    + Supports wlroots 0.17. (Closes: #1058494)
+  * debian/control: Update build-dependencies accordingly.
+  * debian/control: Add dependency on libglx-vendor. (Closes: #1033938)
+  * debian/patches: Drop old patches, add patch to relax wf-config
+    version requirement.
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 10 Jan 2024 09:57:41 -0500
+
+wayfire (0.8.0-1) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Boyuan Yang <byang@debian.org>  Tue, 24 Oct 2023 13:26:25 -0400
+
+wayfire (0.8.0-1~exp1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/rules: Enable switches to use system wlroots and
+    wf-config libraries.
+  * debian/patches: Dropped, merged upstream.
+  * debian/patches/564b75a45d7c844b61b510e68fa527109fce4a75.patch:
+    Add upstream patch from trunk to fix man page installation.
+  * debian/wayfire.triggers: Circumvent lintian ldconfig error.
+  * debian/control: Add new build-dependency nlohmann-json3-dev.
+
+ -- Boyuan Yang <byang@debian.org>  Mon, 16 Oct 2023 15:09:20 -0400
+
+wayfire (0.7.5-2) unstable; urgency=medium
+
+  * debian/control: Add missing -dev package dependency for
+    wayfire-dev package.
+
+ -- Boyuan Yang <byang@debian.org>  Fri, 29 Sep 2023 09:46:30 -0400
+
+wayfire (0.7.5-1) unstable; urgency=medium
+
+  * Upload to unstable.
+  * debian/patches/0001-Fix-FTBFS-with-gcc-13.patch: Fix FTBFS with
+    gcc 13. (Closes: #1037892)
+
+ -- Boyuan Yang <byang@debian.org>  Mon, 24 Jul 2023 17:03:49 -0400
+
+wayfire (0.7.5-1~exp2) experimental; urgency=high
+
+  * debian/control: Let libwf-utils-dev depends on libwf-utils0.
+    (Closes: #1035440)
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 03 May 2023 15:20:17 -0400
+
+wayfire (0.7.5-1~exp1) experimental; urgency=medium
+
+  * New upstream release.
+  * debian/patches: Dropped, merged upstream.
+  * debian/control: Require wlroots (>= 0.16).
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 07 Dec 2022 15:45:49 -0500
+
+wayfire (0.7.4-3) unstable; urgency=medium
+
+  * debian/control: Let libwf-utils-dev depends on libwf-utils0.
+    (Closes: #1035440)
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 03 May 2023 15:25:12 -0400
+
+wayfire (0.7.4-2) unstable; urgency=medium
+
+  * debian/patches: Apply patch to fix package reproducibility.
+    (Closes: #1016486)
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 03 Aug 2022 10:39:50 -0400
+
+wayfire (0.7.4-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Boyuan Yang <byang@debian.org>  Sun, 31 Jul 2022 10:29:34 -0400
+
+wayfire (0.7.3-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #953892)
+
+ -- Boyuan Yang <byang@debian.org>  Thu, 05 May 2022 12:03:58 -0400
