@@ -86,12 +86,12 @@ void main()
     {
         y = uv.y;
         uv_squeeze.y += -progress_pt_two * (inv_h - target_box.w);
-        sigmoid = 1.0 / (1.0 + pow(2.718, -(y * (1.0 / (src_box.w - target_box.w)) * 15.0 - 10.0)));
+        sigmoid = pow(clamp(y * (1.0 / (src_box.w - target_box.w)), 0.0, 1.0), 3.0);
     } else
     {
         y = 1.0 - uv.y;
         uv_squeeze.y -= -progress_pt_two * (inv_h - target_box.y + target_box.w);
-        sigmoid = 1.0 / (1.0 + pow(2.718, -(y * (1.0 / (target_box.w - src_box.y)) * 15.0 - 10.0)));
+        sigmoid = pow(clamp(y * (1.0 / (target_box.w - src_box.y)), 0.0, 1.0), 3.0);
     }
 
     uv_squeeze.x += sigmoid * progress_pt_one * (src_box.x - target_box.x) * inv_w;
@@ -139,12 +139,12 @@ void main()
     {
         y = 1.0 - uv.x;
         uv_squeeze.x += progress_pt_two * (inv_w - target_box.z);
-        sigmoid = 1.0 / (1.0 + pow(2.718, -(y * (1.0 / (src_box.z - target_box.z)) * 15.0 - 10.0)));
+        sigmoid = pow(clamp(y * (1.0 / (src_box.z - target_box.z)), 0.0, 1.0), 3.0);
     } else
     {
         y = uv.x;
         uv_squeeze.x -= progress_pt_two * (inv_w - target_box.x + target_box.z);
-        sigmoid = 1.0 / (1.0 + pow(2.718, -(y * (1.0 / (target_box.z - src_box.x)) * 15.0 - 10.0)));
+        sigmoid = pow(clamp(y * (1.0 / (target_box.z - src_box.x)), 0.0, 1.0), 3.0);
     }
 
     uv_squeeze.y += sigmoid * progress_pt_one * (src_box.y - target_box.y) * inv_h;
