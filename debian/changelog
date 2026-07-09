@@ -1,3 +1,15 @@
+meteor (0.1.2-4) unstable; urgency=medium
+
+  * Restore DND bypass for xdg_popup compatibility
+
+ -- Horacio <horacio@austral.os>  Wed, 08 Jul 2026 14:27:00 -0300
+
+meteor (0.1.2-3) unstable; urgency=medium
+
+  * Revert workaround in seat.cpp for DND
+
+ -- Horacio <horacio@austral.os>  Wed, 08 Jul 2026 14:10:00 -0300
+
 meteor (0.1.0-1) unstable; urgency=medium
 
   * New upstream release

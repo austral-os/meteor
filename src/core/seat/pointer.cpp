@@ -76,7 +76,7 @@ void wf::pointer_t::update_cursor_position(int64_t time_msec)
      * events to the grabbed surface, even if the pointer goes outside of it.
      * This enables Xwayland DnD to work correctly, and also lets the user for
      * ex. grab a scrollbar and move their mouse freely. */
-    if (!grabbed_node && this->focus_enabled())
+    if ((!grabbed_node || seat->priv->drag_active) && this->focus_enabled())
     {
         const auto& scene = wf::get_core().scene();
         auto isec = scene->find_node_at(gc);
@@ -91,10 +91,12 @@ void wf::pointer_t::send_leave_to_focus(wf::scene::node_ptr old_focus)
 {
     if (old_focus)
     {
-        if (!old_focus->wants_raw_input())
+        if (!old_focus->wants_raw_input() && !seat->priv->drag_active)
         {
             // Make a copy of sent buttons: it could happen that we switch focus multiple times if we have
             // multiple grabs on multiple outputs.
+            // Skip during drag: force-releasing the grab button would cancel
+            // the drag via drag_handle_pointer_button.
             auto send_release = this->currently_sent_buttons;
             for (auto button : send_release)
             {
@@ -164,7 +166,13 @@ void wf::pointer_t::update_cursor_focus(wf::scene::node_ptr new_focus)
     cursor_focus = new_focus;
 
     send_leave_to_focus(old_focus);
-    currently_sent_buttons.clear();
+
+    // During drag, keep currently_sent_buttons so the real button release
+    // reaches the drag grab via send_button. Otherwise the drag gets stuck.
+    if (!seat->priv->drag_active)
+    {
+        currently_sent_buttons.clear();
+    }
 
     if (cursor_focus)
     {

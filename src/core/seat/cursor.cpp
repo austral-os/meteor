@@ -153,7 +153,13 @@ void wf::cursor_t::init_cursor_shape_manager()
         const char *shape_name = wlr_cursor_shape_v1_name(event->shape);
         struct wlr_seat_client *focused_client = seat->seat->pointer_state.focused_client;
 
-        if (focused_client != event->seat_client)
+        // During an active drag, the pointer focus moves to the drag grab,
+        // so focused_client won't match. Allow the drag source client to
+        // set the cursor shape.
+        bool is_drag_source = seat->seat->drag &&
+            seat->seat->drag->seat_client == event->seat_client;
+
+        if (focused_client != event->seat_client && !is_drag_source)
         {
             return;
         }
@@ -230,7 +236,14 @@ void wf::cursor_t::set_cursor(
     if (validate_request)
     {
         auto pointer_client = seat->seat->pointer_state.focused_client;
-        if (pointer_client != ev->seat_client)
+
+        // During an active drag, the pointer focus moves to the drag grab,
+        // so focused_client won't match the drag source. Allow the drag
+        // source client to set the cursor image.
+        bool is_drag_source = seat->seat->drag &&
+            seat->seat->drag->seat_client == ev->seat_client;
+
+        if (pointer_client != ev->seat_client && !is_drag_source)
         {
             return;
         }

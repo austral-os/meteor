@@ -1,6 +1,6 @@
 Package: libmeteor-touch-dev
 Source: meteor
-Version: 0.1.0-1
+Version: 0.1.2-4
 Architecture: amd64
 Maintainer: Debian QA Group <packages@qa.debian.org>
 Installed-Size: 87

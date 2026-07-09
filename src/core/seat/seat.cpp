@@ -284,6 +284,7 @@ wf::seat_t::seat_t(wl_display *display, std::string name) : seat(wlr_seat_create
     priv->start_drag.set_callback([&] (void *data)
     {
         auto d = static_cast<wlr_drag*>(data);
+
         if (d->icon)
         {
             this->priv->drag_icon = std::make_unique<wf::drag_icon_t>(d->icon);
@@ -452,7 +453,9 @@ void wf::seat_t::impl::validate_drag_request(wlr_seat_request_start_drag_event *
 {
     auto seat = wf::get_core().get_current_seat();
 
-    if (wlr_seat_validate_pointer_grab_serial(seat, ev->origin, ev->serial))
+    // Bypass strict validation to allow drag-and-drop from xdg_popups
+    // (e.g., Horizon Downloads Applet Vault).
+    // if (wlr_seat_validate_pointer_grab_serial(seat, ev->origin, ev->serial))
     {
         wlr_seat_start_pointer_drag(seat, ev->drag, ev->serial);
         return;
